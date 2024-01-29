@@ -1,0 +1,232 @@
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+    <script>
+        AFRAME.registerComponent('play-pause', {
+            init: function () {
+                var myVideo = document.querySelector('#video02');
+                var videoControls = document.querySelector('#boxclick');
+                this.el.addEventListener('click', function () {
+                    if (myVideo.paused) {
+                        myVideo.play();
+                    } else {
+                        myVideo.pause();
+                    }
+                });
+            }
+        });
+    </script>
+    <script>
+        AFRAME.registerComponent("clickable-box", {
+            init: function () {
+                const box1 = this.el;
+                const box2 = document.getElementById("select_movie");
+                box1.addEventListener("click", function () {
+                    box2.setAttribute("visible", !box2.getAttribute("visible"));
+                });
+            },
+        });
+      </script>
+</head>
+
+<body>
+
+    <a-scene>
+        <a-assets>
+            <img id="image01" src="image/sicario.png">
+            <img id="image02" src="image/tenet.png">
+            <img id="image03" src="image/inception.png">
+            <video id="video01" src="video/Sicario.mp4" loop="true"></video>
+            <video id="video02" src="video/TENET.mp4" loop="true"></video>
+            <video id="video03" src="video/Inception.mp4" loop="true"></video>
+            <a-asset-item id="cashier" src="model/senor_sensor__idle_01/scene.gltf"></a-asset-item>
+            <a-asset-item id="seat" src="model/cinemamovie_theater_seat/scene.gltf"></a-asset-item>
+            <a-asset-item id="screen" src="model/cinema_screen/scene.gltf"></a-asset-item>
+            <a-asset-item id="theater" src="model/movie_theater/scene.gltf"></a-asset-item>
+            <a-asset-item id="popcorn" src="model/popcorn_machine/scene.gltf"></a-asset-item>
+            <a-asset-item id="dispenser" src="model/beer_slushy_beverage_dispenser_machine/scene.gltf"></a-asset-item>
+            <a-asset-item id="popcorn_bucket" src="model/popcorn/scene.gltf"></a-asset-item>
+            <a-asset-item id="cup" src="model/scene.gltf"></a-asset-item>
+        </a-assets>
+
+        <a-entity camera look-controls wasd-controls="acceleration:60" position="2 1.8 3" rotation="0 0 0">
+            <a-cursor></a-cursor>
+        </a-entity>
+
+        <a-entity gltf-model="#popcorn" position="-0.9 0.4 1.9" rotation="0 90 0"></a-entity>
+        <a-entity gltf-model="#dispenser" position="-2.6 0 1.1" rotation="0 0 0" scale="0.04 0.05 0.05"></a-entity>
+        <a-entity gltf-model="#popcorn_bucket" position="-4 1.97 4.6" rotation="0 0 0" scale="0.1 0.1 0.1"></a-entity>
+        <a-entity gltf-model="#popcorn_bucket" position="-4 1.98 4.3" rotation="0 0 0" scale="0.12 0.12 0.12"></a-entity>
+        <a-entity gltf-model="#popcorn_bucket" position="-4 1.99 4" rotation="0 0 0" scale="0.14 0.14 0.14"></a-entity>
+        <a-entity gltf-model="#popcorn_bucket" position="-4 2 3.7" rotation="0 0 0" scale="0.16 0.16 0.16"></a-entity>
+        <a-entity gltf-model="#popcorn_bucket" position="-4 1.99 3.4" rotation="0 0 0" scale="0.14 0.14 0.14"></a-entity>
+        <a-entity gltf-model="#popcorn_bucket" position="-4 1.99 3.1" rotation="0 0 0" scale="0.14 0.14 0.14"></a-entity>
+        <a-entity gltf-model="#popcorn_bucket" position="-4 1.98 2.8" rotation="0 0 0" scale="0.12 0.12 0.12"></a-entity>
+        <a-entity gltf-model="#popcorn_bucket" position="-4 1.97 2.5" rotation="0 0 0" scale="0.1 0.1 0.1"></a-entity>
+        <a-entity gltf-model="#popcorn_bucket" position="-4 2 2.2" rotation="0 0 0" scale="0.16 0.16 0.16"></a-entity>
+        <a-entity gltf-model="#popcorn_bucket" position="-4 1.97 1.9" rotation="0 0 0" scale="0.1 0.1 0.1"></a-entity>
+        <a-entity gltf-model="#cup" position="-4 1.9 3.4" rotation="0 0 0" scale="1 1 1"></a-entity>
+        <a-entity gltf-model="#vending" position="-2.6 0 1.1" rotation="0 0 0" scale="5 5 5"></a-entity>
+        <a-entity gltf-model="#theater" position="0 0 0" rotation="0 0 0" scale="1 1 1" collistion="true"></a-entity>
+        <a-entity gltf-model="#screen" position="0 0 0" rotation="0 0 0" scale="0.4 0.5 0.5"></a-entity>
+        <a-entity gltf-model="#cashier" position="-2 0 3.65" rotation="0 90 0" scale="0.8 0.8 0.8" animation-mixer="loop: repeat"></a-entity>
+
+        <a-video id="video001" src="#video02"
+            position="39 4.5 3"
+            rotation="0 -90 0"
+            width="16"
+            height="9">
+            <a-cursor></a-cursor>
+        </a-video>
+
+        <a-box
+            id="button"
+            position="-0.9 0.9 4"
+            width="1"
+            height="1"
+            depth="1"
+            color="blue"
+            visible="false"
+            clickable-box>
+        </a-box>
+
+        <a-box
+            id="select_movie"
+            visible="false"
+            position="-1 2 3.9" 
+            width="0.1" 
+            height="1" 
+            depth="2">
+            <a-box 
+                position="0.01 0 0.625"
+                width="0.1"
+                height="0.8"
+                depth="0.5"
+                src="#image01"
+                clickable-box>
+            </a-box>
+
+            <a-box 
+                position="0.02 0 0"
+                width="0.1"
+                height="0.8"
+                depth="0.5"
+                src="#image02"
+                clickable-box>
+            </a-box>
+
+            <a-box 
+                position="0.01 0 -0.625"
+                width="0.1"
+                height="0.8"
+                depth="0.5"
+                src="#image03"
+                clickable-box>
+            </a-box>
+        </a-box>
+
+        <a-plane 
+            position="3.5 2 1" 
+            width="1.35" height="2.4" 
+            rotation="0 -90 0" 
+            src="#image01">
+        </a-plane>
+
+        <a-plane 
+            position="3.5 2 3" 
+            width="1.35" height="2.4" 
+            rotation="0 -90 0" 
+            src="#image02">
+        </a-plane>
+
+        <a-plane 
+            position="3.5 2 5" 
+            width="1.35" height="2.4" 
+            rotation="0 -90 0" 
+            src="#image03">
+        </a-plane>
+
+        <a-box
+            id="boxclick"
+            visible="false"
+            position="33 1 -2" width="1" height="1"
+            event-set__click="_event: click; _target: #video001; visible: true"
+            event-set__enter="_event: mouseenter; material.color: #FF0000"
+            event-set__leave="_event: mouseleave; material.color: #FFFFFF"
+            play-pause>
+        </a-box>
+
+        <a-box
+            id="boxclick"
+            visible="false"
+            position="33 1 0" width="1" height="1"
+            event-set__click="_event: click; _target: #video001; visible: true"
+            event-set__enter="_event: mouseenter; material.color: #FF0000"
+            event-set__leave="_event: mouseleave; material.color: #FFFFFF"
+            play-pause>
+        </a-box>
+
+        <a-box
+            id="boxclick"
+            visible="false"
+            position="33 1 2" width="1" height="1"
+            event-set__click="_event: click; _target: #video001; visible: true"
+            event-set__enter="_event: mouseenter; material.color: #FF0000"
+            event-set__leave="_event: mouseleave; material.color: #FFFFFF"
+            play-pause>
+        </a-box>
+
+        <a-box
+            id="boxclick"
+            visible="false"
+            position="33 1 4" width="1" height="1"
+            event-set__click="_event: click; _target: #video001; visible: true"
+            event-set__enter="_event: mouseenter; material.color: #FF0000"
+            event-set__leave="_event: mouseleave; material.color: #FFFFFF"
+            play-pause>
+        </a-box>
+
+        <a-box
+            id="boxclick"
+            visible="false"
+            position="33 1 6" width="1" height="1"
+            event-set__click="_event: click; _target: #video001; visible: true"
+            event-set__enter="_event: mouseenter; material.color: #FF0000"
+            event-set__leave="_event: mouseleave; material.color: #FFFFFF"
+            play-pause>
+        </a-box>
+
+        <a-box
+            id="boxclick"
+            visible="false"
+            position="33 1 8" width="1" height="1"
+            event-set__click="_event: click; _target: #video001; visible: true"
+            event-set__enter="_event: mouseenter; material.color: #FF0000"
+            event-set__leave="_event: mouseleave; material.color: #FFFFFF"
+            play-pause>
+        </a-box>
+
+        <!-- Use the sky component if needed -->
+        <a-sky color="#ECECEC"></a-sky>
+        
+        <script>
+            AFRAME.registerComponent("cursor-listener", {
+              init: function () {
+                const box = document.getElementById("#select_movie");
+      
+                // Event listener for the click event on the button
+                this.el.addEventListener("click", function () {
+                  // Toggle the visibility of the box
+                  box.setAttribute("visible", !box.getAttribute("visible"));
+                });
+              },
+            });
+        </script>
+
+    </a-scene>
+
+</body>
+
+</html>

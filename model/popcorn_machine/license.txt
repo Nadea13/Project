@@ -1,0 +1,11 @@
+Model Information:
+* title:	Popcorn Machine
+* source:	https://sketchfab.com/3d-models/popcorn-machine-c1990ffd11fe407ebd7da837272deb4f
+* author:	Jared64 (https://sketchfab.com/Jared64)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Popcorn Machine" (https://sketchfab.com/3d-models/popcorn-machine-c1990ffd11fe407ebd7da837272deb4f) by Jared64 (https://sketchfab.com/Jared64) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
